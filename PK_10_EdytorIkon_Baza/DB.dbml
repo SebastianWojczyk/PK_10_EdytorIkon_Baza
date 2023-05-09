@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DatabaseIcon" Class="DBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\DatabaseIcon.mdf;Integrated Security=True;Connect Timeout=30" SettingsObjectName="PK_10_EdytorIkon_Baza.Properties.Settings" SettingsPropertyName="DatabaseIconConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Picture" Member="Pictures">
+    <Type Name="Picture">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Width" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Height" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Picture_Pixel" Member="Pixels" ThisKey="Id" OtherKey="PictureId" Type="Pixel" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Pixel" Member="Pixels">
+    <Type Name="Pixel">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PosX" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PosY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Color" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PictureId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Picture_Pixel" Member="Picture" ThisKey="PictureId" OtherKey="Id" Type="Picture" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
